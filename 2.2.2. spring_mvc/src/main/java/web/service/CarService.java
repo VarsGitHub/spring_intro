@@ -8,11 +8,7 @@ import java.util.List;
 
 @Service
 public class CarService {
-    private List<Car> carList;
-
-    public List<Car> getCarList() {
-        return carList;
-    }
+    private final List<Car> carList;
 
     public CarService() {
         carList = new ArrayList<>();
@@ -23,7 +19,11 @@ public class CarService {
         carList.add(new Car("chevrolet", 120, 25));
     }
 
-    public List<Car> getListPart(int count) {
-        return carList.subList(0, count);
+    public List<Car> showList(String count) {
+        if (count == null || Integer.parseInt(count) >= 5) {
+            return carList;
+        } else {
+            return carList.subList(0, Integer.parseInt(count));
+        }
     }
 }
